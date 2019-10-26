@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Новости {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'contacts/css/styles.css' %}">
+<div class="container text_info_container">
+	<div class="inner_wrap">
+		<div class="title">
+			<div class="text_content main_info row">
+				<div class="col col-2"></div>
+				<div class="col col-8">
+					Ультразвуковое исследование в Акушерстве, Гинекологии, Перинатологии.
+					<br>
+					Меглей Сергей Васильевич
+					<br>
+					Врач акушер-гинеколог
+			    </div>
+			    <div class="col col-2">
+			    	<img id="logo" src="{% static 'img/logo.jpg' %}">
+			    </div>
+			</div>
+			<hr>
+		</div>
+
+		<div class="calendar">
+			<div class="text_content">
+				<ul>График работы:
+					<li>понедельник, вторник, среда, четверг, пятница -  8:00 - 14:30.</li>
+					<li>суббота (только те субботы, что выпадают на четное число месяца) - 8:00 - 11:30</li>
+			    </ul>
+				Также возможна запись <a class="appointment_link" href="{% url 'patients:calendar' %}">онлайн</a>
+				<hr>
+            </div>
+            <div class="text_content">
+            	<div class="row">
+            		<div class="col col-10">
+						Для акушерского осмотра с собой иметь пеленку (крупное полотенце), салфетку (вытереться), обменную карту и все прошлые УЗИ.
+						<br>
+						Диск для записи видео брать не нужно, так как не все форматы подходят и в кабинете есть диски.
+						<br>
+						Для гинекологического осмотра с собой иметь пеленку, перчатки, презерватив для УЗИ, салфетку.
+				    </div>
+				    <div class="col col-2">
+				    	<img id="dvd" src="{% static 'img/dvd.jpg' %}">
+				    </div>
+			    </div>
+			    <hr>
+			</div>
+		</div>
+
+		<div class="contacts_info">
+            <div class="text_content main_info">
+				 Наш адрес: Бендеры, 3200, ул.Протягайловская, 4, Роддом
+            </div>
+			<div id="map" class="map">
+				<script>
+			    var map;
+			    function initMap() {
+			        map = new google.maps.Map(document.getElementById('map'), {
+			            center: {lat: 46.8150627, lng: 29.45335},
+			            zoom: 17
+			        });
+					
+					var marker = new google.maps.Marker({
+						position: {lat: 46.8150627, lng: 29.45335},
+						map: map,
+						title: 'Бендерский роддом'
+					});
+					
+					google.maps.event.addListener(marker, 'click', function() {
+						window.open('localhost:8000');
+					});
+					
+				}
+			    </script>
+			    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNGTer7n7ZncHRyHnGSi-wq1qLkNdto98&callback=initMap"
+			    async defer></script>
+			</div>
+
+			 
+            <div class="text_content">
+            	<hr>
+            	<ul> Как к нам добраться:
+					<li>Из центра города – маршрутки №№ 6, 17, 18.</li>
+					<li>С «Борисовки», «Хомутяновки» - маршрутки №№ 17, 18, 24.</li>
+					<li>С «БАМа», « Пентагона» - маршрутки №№  24.</li>
+					<li>С «Ленинского» - маршрутки №№ 24.</li>
+					<li>С «Шёлкового» - маршрутка № 12.</li>
+					<li>С «Северного» и с Варницы – маршрутка № 24.</li>
+					<li>Из села Протягайловка – маршрутка № 6А.</li>
+			    </ul>
+				 
+
+				<ul>Добраться на автомобиле из Паркан:
+				<li>Первый вариант - от моста через Днестр в сторону Кишинева до Бендерского автосервиса, затем налево по улице Кишиневской, по улице Бендерского Восстания до конца, поворот направо, через 100 метров БЦМиР.</li>
+
+				<li>Второй вариант - от моста ехать в Центр по улице Суворова до конца, на Ленинском микрорайоне поворот направо и по улице Дружбы прямо, проехать светофор, когда слева закончится поле - повернуть на первом повороте влево, через 100 метров БЦМиР.</li>
+			    </ul>
+				{{ data.additional_info }}
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

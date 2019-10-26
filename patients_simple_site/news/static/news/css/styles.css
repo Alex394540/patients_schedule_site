@@ -1,0 +1,22 @@
+.news-container {
+	margin-top: 5%;
+}
+
+.news_time {
+	font-size: 2vh;
+}
+
+.page-link {
+	background-color: #4c4242;
+	border: none;
+}
+
+.page-item.active .page-link {
+	color: yellow;
+	background-color: #4c4242;
+}
+
+.page-item.disabled .page-link {
+	color: gray;
+	background-color: #4c4242;
+}
