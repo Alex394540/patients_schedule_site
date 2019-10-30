@@ -25,7 +25,7 @@ SECRET_KEY = 'ar)0#&_fj*aduv*9wpmljeez)s14-=kxf%78fjyt7$54$yrh(('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['157.230.30.166']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news.apps.NewsConfig',
     'patients.apps.PatientsConfig',
-    'contacts.apps.ContactsConfig'
+    'contacts.apps.ContactsConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,16 @@
+.arrow img {
+	width: 3em;
+	cursor: pointer;
+}
+
+.left_arrow {
+	float: right;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.centered {
+	text-align: center;
+}

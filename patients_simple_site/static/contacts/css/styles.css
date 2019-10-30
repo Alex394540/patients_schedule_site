@@ -1,0 +1,48 @@
+.centered {
+	text-align: center;
+}
+
+.inner_wrap {
+	padding: 2%;
+}
+
+.title {
+	font-size: 1.5rem;
+	padding: 1% 0;
+}
+
+.main_info {
+	text-align: center;
+}
+
+.calendar {
+	font-size: 1.25rem;
+	padding: 1% 0;
+}
+
+.calendar .appointment_link {
+	color: blue;
+}
+
+.title .main_info {
+	font-weight: 600;
+}
+
+.contacts_info .main_info {
+	font-size: 1.25rem;
+}
+
+#logo {
+	margin-top: 15%;
+}
+
+#dvd {
+	margin-top: 30%;
+}
+
+#map {
+	margin: 2% auto;
+	width: 400px;
+	height: 400px;
+}
+

@@ -1,0 +1,60 @@
+.my_nav {
+	background-color: #1c1d1f!important;
+	color: #6aca05;
+}
+
+.my_nav .navbar-nav .nav-item .nav-link {
+	color: #efef03bd;
+	font-size: 2vh;
+	font-weight: 100;
+}
+
+main {
+	height: 90vh;
+}
+
+body {
+    background-image: url('/static/img/bg.jpg');
+}
+
+footer {
+	min-height: 3vh;
+}
+
+.centered {
+    text-align: center;
+}
+
+.central_div {
+	margin-left: 30%;
+	width: 40%;
+}
+
+#on_top {
+	margin: 0 auto;
+	color: blue;
+}
+
+#on_top img {
+    width: 10%;
+}
+
+#navbarText {
+	padding-top: 0.5%;
+}
+
+#home {
+    width: 3.5vh;
+}
+
+@media only screen and (max-width : 992px) {
+
+	.collapse:not(.show) {
+		display: inline-block;
+	}
+
+	.navbar-nav {
+		flex-direction: row;
+	}
+
+}
