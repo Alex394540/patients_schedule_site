@@ -21,7 +21,8 @@ class News(models.Model):
     
     class Meta:
         ordering = ['-created', 'title']
-
+    
+    @property
     def formatted_creation_time(self):
         return self.created.strftime("%Y-%m-%d %H:%M")
 
