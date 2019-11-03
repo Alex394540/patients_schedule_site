@@ -1965,3 +1965,156 @@ WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x560b2518f120 pid:
 gracefully (RE)spawned uWSGI master process (pid: 9170)
 spawned uWSGI worker 1 (pid: 9319, cores: 1)
 [pid: 9319|app: 0|req: 1/1] 45.33.5.240 () {28 vars in 302 bytes} [Sun Nov  3 14:38:52 2019] GET / => generated 7528 bytes in 39 msecs (HTTP/1.1 200) 3 headers in 110 bytes (2 switches on core 0)
+*** Starting uWSGI 2.0.18 (64bit) on [Sun Nov  3 12:53:47 2019] ***
+compiled with version: 7.4.0 on 28 October 2019 16:03:55
+os: Linux-4.15.0-66-generic #75-Ubuntu SMP Tue Oct 1 05:24:09 UTC 2019
+nodename: ubuntu-s-1vcpu-1gb-fra1-01
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/ws/patient_schedule_website/patients_simple_site
+detected binary path: /home/ws/patient_schedule_website/bin/uwsgi
+chdir() to /home/ws/patient_schedule_website/patients_simple_site
+your processes number limit is 3842
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/ws/patient_schedule_website/patients_simple_site/mysite.sock fd 3
+Python version: 3.6.8 (default, Oct  7 2019, 12:59:55)  [GCC 8.3.0]
+PEP 405 virtualenv detected: /home/ws/patient_schedule_website
+Set PythonHome to /home/ws/patient_schedule_website
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x5584ac58a2f0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 145808 bytes (142 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x5584ac58a2f0 pid: 9950 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9950)
+spawned uWSGI worker 1 (pid: 9952, cores: 1)
+[pid: 9952|app: 0|req: 1/1] 93.92.206.114 () {42 vars in 882 bytes} [Sun Nov  3 14:53:53 2019] GET / => generated 7528 bytes in 49 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 9952|app: 0|req: 2/2] 93.92.206.114 () {44 vars in 933 bytes} [Sun Nov  3 14:53:55 2019] GET /calendar/ => generated 15682 bytes in 47 msecs (HTTP/1.1 200) 5 headers in 293 bytes (1 switches on core 0)
+[2019-11-03 14:54:44] Назначен осмотр. Запись на 2019-11-05 08:30:00. 
+ТЕСТ.
+[pid: 9952|app: 0|req: 3/3] 93.92.206.114 () {50 vars in 1036 bytes} [Sun Nov  3 14:54:44 2019] POST /add_appointment/ => generated 2 bytes in 21 msecs (HTTP/1.1 200) 5 headers in 265 bytes (2 switches on core 0)
+[pid: 9952|app: 0|req: 4/4] 93.92.206.114 () {50 vars in 1042 bytes} [Sun Nov  3 14:54:51 2019] POST /remove_appointment/ => generated 2 bytes in 9 msecs (HTTP/1.1 200) 3 headers in 107 bytes (2 switches on core 0)
+...gracefully killing workers...
+Gracefully killing worker 1 (pid: 9952)...
+worker 1 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/ws/patient_schedule_website/patients_simple_site
+closing all non-uwsgi socket fds > 2 (max_fd = 1024)...
+found fd 3 mapped to socket 0 (/home/ws/patient_schedule_website/patients_simple_site/mysite.sock)
+running /home/ws/patient_schedule_website/bin/uwsgi
+[uWSGI] getting INI configuration from uwsgi.ini
+*** Starting uWSGI 2.0.18 (64bit) on [Sun Nov  3 14:54:57 2019] ***
+compiled with version: 7.4.0 on 28 October 2019 16:03:55
+os: Linux-4.15.0-66-generic #75-Ubuntu SMP Tue Oct 1 05:24:09 UTC 2019
+nodename: ubuntu-s-1vcpu-1gb-fra1-01
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/ws/patient_schedule_website/patients_simple_site
+detected binary path: /home/ws/patient_schedule_website/bin/uwsgi
+chdir() to /home/ws/patient_schedule_website/patients_simple_site
+your processes number limit is 3842
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 inherited UNIX address /home/ws/patient_schedule_website/patients_simple_site/mysite.sock fd 3
+Python version: 3.6.8 (default, Oct  7 2019, 12:59:55)  [GCC 8.3.0]
+PEP 405 virtualenv detected: /home/ws/patient_schedule_website
+Set PythonHome to /home/ws/patient_schedule_website
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55e86a8df120
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 145808 bytes (142 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55e86a8df120 pid: 9950 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 9950)
+spawned uWSGI worker 1 (pid: 9965, cores: 1)
+[pid: 9965|app: 0|req: 1/1] 139.162.106.181 () {32 vars in 403 bytes} [Sun Nov  3 15:02:32 2019] GET / => generated 7528 bytes in 49 msecs (HTTP/1.1 200) 3 headers in 110 bytes (2 switches on core 0)
+[pid: 9965|app: 0|req: 2/2] 186.233.178.81 () {32 vars in 466 bytes} [Sun Nov  3 15:10:55 2019] GET / => generated 7528 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 110 bytes (2 switches on core 0)
+*** Starting uWSGI 2.0.18 (64bit) on [Sun Nov  3 13:14:46 2019] ***
+compiled with version: 7.4.0 on 28 October 2019 16:03:55
+os: Linux-4.15.0-66-generic #75-Ubuntu SMP Tue Oct 1 05:24:09 UTC 2019
+nodename: ubuntu-s-1vcpu-1gb-fra1-01
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/ws/patient_schedule_website/patients_simple_site
+detected binary path: /home/ws/patient_schedule_website/bin/uwsgi
+chdir() to /home/ws/patient_schedule_website/patients_simple_site
+your processes number limit is 3842
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/ws/patient_schedule_website/patients_simple_site/mysite.sock fd 3
+Python version: 3.6.8 (default, Oct  7 2019, 12:59:55)  [GCC 8.3.0]
+PEP 405 virtualenv detected: /home/ws/patient_schedule_website
+Set PythonHome to /home/ws/patient_schedule_website
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x560c8f19f300
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 145808 bytes (142 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x560c8f19f300 pid: 10303 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 10303)
+spawned uWSGI worker 1 (pid: 10305, cores: 1)
+[pid: 10305|app: 0|req: 1/1] 93.92.206.114 () {46 vars in 964 bytes} [Sun Nov  3 15:14:54 2019] GET /calendar/ => generated 15682 bytes in 88 msecs (HTTP/1.1 200) 5 headers in 293 bytes (2 switches on core 0)
+[2019-11-03 15:15:06] Запланировано обследование: Запись на 2019-11-07 08:30:00. 
+TESTTSTSTTET.
+[pid: 10305|app: 0|req: 2/2] 93.92.206.114 () {50 vars in 1036 bytes} [Sun Nov  3 15:15:06 2019] POST /add_appointment/ => generated 2 bytes in 28 msecs (HTTP/1.1 200) 5 headers in 265 bytes (2 switches on core 0)
+[2019-11-03 15:15:16] Удалено обследование: Запись на 2019-11-07 08:30:00. 
+TESTTSTSTTET.
+[pid: 10305|app: 0|req: 3/3] 93.92.206.114 () {50 vars in 1042 bytes} [Sun Nov  3 15:15:16 2019] POST /remove_appointment/ => generated 2 bytes in 17 msecs (HTTP/1.1 200) 3 headers in 107 bytes (2 switches on core 0)
+...gracefully killing workers...
+Gracefully killing worker 1 (pid: 10305)...
+worker 1 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/ws/patient_schedule_website/patients_simple_site
+closing all non-uwsgi socket fds > 2 (max_fd = 1024)...
+found fd 3 mapped to socket 0 (/home/ws/patient_schedule_website/patients_simple_site/mysite.sock)
+running /home/ws/patient_schedule_website/bin/uwsgi
+[uWSGI] getting INI configuration from uwsgi.ini
+*** Starting uWSGI 2.0.18 (64bit) on [Sun Nov  3 15:15:25 2019] ***
+compiled with version: 7.4.0 on 28 October 2019 16:03:55
+os: Linux-4.15.0-66-generic #75-Ubuntu SMP Tue Oct 1 05:24:09 UTC 2019
+nodename: ubuntu-s-1vcpu-1gb-fra1-01
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/ws/patient_schedule_website/patients_simple_site
+detected binary path: /home/ws/patient_schedule_website/bin/uwsgi
+chdir() to /home/ws/patient_schedule_website/patients_simple_site
+your processes number limit is 3842
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 inherited UNIX address /home/ws/patient_schedule_website/patients_simple_site/mysite.sock fd 3
+Python version: 3.6.8 (default, Oct  7 2019, 12:59:55)  [GCC 8.3.0]
+PEP 405 virtualenv detected: /home/ws/patient_schedule_website
+Set PythonHome to /home/ws/patient_schedule_website
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x56497d5de130
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 145808 bytes (142 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x56497d5de130 pid: 10303 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 10303)
+spawned uWSGI worker 1 (pid: 10311, cores: 1)

@@ -1,7 +1,10 @@
 import logging
 from datetime import timedelta, date, datetime
+
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.db.models.signals import pre_delete, pre_save
+from django.dispatch import receiver
 
 from .managers import AppointmentManager
 from contacts.models import FreeDay
@@ -59,13 +62,8 @@ class Appointment(models.Model):
     def save(self, *args, **kwargs):
         if self.is_valid():
             super().save(*args, **kwargs)
-            log.info('Назначен осмотр. ' + str(self))
         else:
             raise ValidationError('Выбрано нерабочее время! Попробуйте еще раз')
-
-    def delete(self):
-        log.info('Осмотр был удален! ' + str(self))
-        super().delete()
 
     def is_valid(self):
         freedays = FreeDay.objects.filter(start__gte=self.time, end__lte=self.time)
@@ -76,3 +74,14 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f"Запись на {self.time}. \n{self.comment}."
+
+
+@receiver(pre_save, sender=Appointment)
+def appointment_creation_audit(sender, instance, **kwargs):
+    log.info("Запланировано обследование: " + str(instance))
+
+
+@receiver(pre_delete, sender=Appointment)
+def appointment_deletion_audit(sender, instance, **kwargs):
+    log.info("Удалено обследование: " + str(instance))
+
