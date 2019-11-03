@@ -1,9 +1,13 @@
+import logging
 from datetime import timedelta, date, datetime
 from django.db import models
 from django.core.exceptions import ValidationError
 
 from .managers import AppointmentManager
 from contacts.models import FreeDay
+
+
+log = logging.getLogger('appointments')
 
 
 class Appointment(models.Model):
@@ -55,8 +59,13 @@ class Appointment(models.Model):
     def save(self, *args, **kwargs):
         if self.is_valid():
             super().save(*args, **kwargs)
+            log.info('Назначен осмотр. ' + str(self))
         else:
             raise ValidationError('Выбрано нерабочее время! Попробуйте еще раз')
+
+    def delete(self):
+        log.info('Осмотр был удален! ' + str(self))
+        super().delete()
 
     def is_valid(self):
         freedays = FreeDay.objects.filter(start__gte=self.time, end__lte=self.time)
