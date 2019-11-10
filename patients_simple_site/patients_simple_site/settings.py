@@ -138,6 +138,15 @@ LOGGING = {
             'backupCount': 5,
             'formatter': 'verbose'
         },
+        'notifiers': {
+             'level': 'INFO',
+             'filters': ['require_debug_false'],
+             'class': 'logging.handlers.RotatingFileHandler',
+             'filename': os.path.join(BASE_DIR, 'logs/notifiers.log'),
+             'maxBytes': 1024*1024*100,
+             'backupCount': 5,
+             'formatter': 'verbose'
+        },
         'common': {
             'level': 'DEBUG',
             'filters': [],
@@ -153,6 +162,9 @@ LOGGING = {
         'handlers': ['console'],
     },
     'loggers': {
+        'notifiers': {
+            'handlers': ['common', 'notifiers'],
+        },
         'appointments': {
             'handlers': ['common', 'appointments'],
         },

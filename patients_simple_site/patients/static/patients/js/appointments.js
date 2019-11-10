@@ -36,9 +36,9 @@ function remove_appointment(date_, time_, csrf) {
 
 function add_appointment(date_, time_, csrf) {
     
-    let comment = prompt('Введите ваше ФИО', '');
-    while (comment === "") {
-    	comment = prompt('Введите ваше ФИО', '');
+    let comment = prompt('Введите ваше ФИО и номер телефона', '');
+    while (comment === "" || !comment.match(/.*[0-9]{5}.*/g)) {
+    	comment = prompt('Введите ваше ФИО и номер телефона', '');
     }
 
     if (comment === null) return;

@@ -1,12 +1,16 @@
+import json
 from datetime import datetime
 
 from django.shortcuts import render
 from django.conf import settings
+from django.urls import reverse
 from django.http import HttpResponse
 from django.views.decorators.http import require_http_methods
+from django.views.decorators.cache import never_cache
 
 from .models import Appointment, FreeDay
 from .forms import AppointmentForm
+from .messengers_connector import notify_viber_in_bg
 
 
 def show_day(request, year, month, day):
@@ -55,6 +59,7 @@ def show_week(request, year, month, day):
         })
 
 
+@never_cache
 def show_calendar(request):
     week_start = Appointment.count_start_of_week()
     return show_week(request, week_start.year, week_start.month, week_start.day)
@@ -81,6 +86,9 @@ def add_appointment(request):
     if form.is_valid():
         appointment = form.save()
         request.session.set_expiry(int((appointment_datetime - datetime.now()).total_seconds()))
+
+        data = {'date': date_, 'time': time_, 'comment': comment, 'was_added': True}
+        notify_viber_in_bg(json.dumps(data))
         return HttpResponse('OK')
     else:
         return HttpResponse(status=400)
@@ -100,6 +108,8 @@ def remove_appointment(request):
 
     appointment = Appointment.objects.filter(time=appointment_datetime, created_session=session_key)
     if appointment.exists():
+        data = {'date': date_, 'time': time_, 'comment': appointment.first().comment, 'was_added': False}
+        notify_viber_in_bg(json.dumps(data))
         appointment.delete()
         return HttpResponse('OK')
     else:
