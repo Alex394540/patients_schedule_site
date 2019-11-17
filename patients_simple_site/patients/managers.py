@@ -21,16 +21,16 @@ class AppointmentManager(models.Manager):
     def get_week_appointments_for_display(self, year, month, day):
         appointment_times = AppointmentTime.objects.all()
         free_days = list(FreeDay.objects.all())
-        monday_date, tuesday_date, wednesday_date, thursday_date, friday_date = self.model.get_weekdays_dates(year, month, day)
+        monday_date, tuesday_date, wednesday_date, thursday_date, friday_date, saturday_date = self.model.get_weekdays_dates(year, month, day)
 
         # Fill info about free days
         common_dates_dict = {}
         for t in appointment_times:
             common_dates_dict[t.time.hour, t.time.minute] = {monday_date: '', tuesday_date: '', 
                                                              wednesday_date: '', thursday_date: '', 
-                                                             friday_date: ''}
+                                                             friday_date: '', saturday_date: ''}
             
-            for date_ in (monday_date, tuesday_date, wednesday_date, thursday_date, friday_date,):
+            for date_ in (monday_date, tuesday_date, wednesday_date, thursday_date, friday_date, saturday_date):
                 dt = datetime(date_.year, date_.month, date_.day, t.time.hour, t.time.minute)
                 for free_day in free_days:
                     if free_day.start <= dt <= free_day.end:

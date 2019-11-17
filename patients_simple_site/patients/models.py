@@ -15,7 +15,7 @@ log = logging.getLogger('appointments')
 
 class Appointment(models.Model):
 
-    time = models.DateTimeField()
+    time = models.DateTimeField(unique=True)
     comment = models.CharField(max_length=150)
     created_session = models.TextField()
     
@@ -37,7 +37,7 @@ class Appointment(models.Model):
 
     @classmethod
     def get_weekdays_dates(cls, year, month, day):
-        return [date(year, month, day) + timedelta(days=i) for i in range(5)]
+        return [date(year, month, day) + timedelta(days=i) for i in range(6)]
 
     @classmethod
     def get_prev_week_start(cls, dt):
@@ -67,7 +67,7 @@ class Appointment(models.Model):
 
     def is_valid(self):
         freedays = FreeDay.objects.filter(start__gte=self.time, end__lte=self.time)
-        return self.time.weekday() not in (5,6) and not freedays.exists()
+        return self.time.weekday() != 6 and not freedays.exists()
 
     def get_absolute_url(self):
         return f"appointment/{self.pk}/"

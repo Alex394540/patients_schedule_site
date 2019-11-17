@@ -1,5 +1,7 @@
 from django.db import models
 
+from .managers import FreeDayManager
+
 
 class SingletonModel(models.Model):
 
@@ -20,7 +22,8 @@ class SingletonModel(models.Model):
 
 
 class Settings(SingletonModel):
-	additional_info = models.TextField(blank=True)
+    
+    additional_info = models.TextField(blank=True)
 
 
 class AppointmentTime(models.Model):
@@ -39,12 +42,20 @@ class FreeDay(models.Model):
     FREE_DAY_CHOICES = [
         ('Отпуск', 'Отпуск'),
         ('Праздники', 'Праздники'),
-        ('Отгул', 'Отгул')
+        ('Отгул', 'Отгул'),
+        ('Без записи', 'Без записи'),
+        ('Нерабочая суббота', 'Нерабочая суббота')
     ]
 
     start = models.DateTimeField()
     end = models.DateTimeField()
     free_day_type = models.CharField(max_length=50, choices=FREE_DAY_CHOICES, default=1)
+
+    objects = FreeDayManager()
+    
+    class Meta:
+        ordering = ['-start', 'end']
+        unique_together = ('start', 'end')
 
     def __str__(self):
         return f"{self.free_day_type} с {self.start} до {self.end}"

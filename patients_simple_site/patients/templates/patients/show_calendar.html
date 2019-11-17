@@ -33,6 +33,7 @@
 	      <th scope="col">Среда<br>{{ wednesday }}</th>
 	      <th scope="col">Четверг<br>{{ thursday }}</th>
 	      <th scope="col">Пятница<br>{{ friday }}</th>
+	      <th scope="col">Суббота<br>{{ saturday }}</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -98,6 +99,18 @@
                   {{ time_data.friday }}
               </td>
 	      {% endif %}
+
+              {% if time_data.saturday_set_in_session == request.session.session_key %}
+                <td id='{{saturday}}{{time_data.time}}' class="clickable" onclick="remove_appointment('{{ saturday }}', '{{time_data.time}}', '{{csrf_token}}');">
+                {{ time_data.saturday }}
+            </td>
+              {% elif time_data.saturday != '' or time_data.saturday_not_available %}
+              <td>{{ time_data.saturday }}</td>
+              {% else %}
+              <td id='{{saturday}}{{time_data.time}}' class="clickable" onclick="add_appointment('{{ saturday }}', '{{time_data.time}}', '{{csrf_token}}');">
+                  {{ time_data.saturday }}
+              </td>
+              {% endif %}
 
 	    </tr>
 	    {% endfor %}

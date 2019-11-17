@@ -25,8 +25,8 @@ def show_week(request, year, month, day):
         request.session.create()
 
     appointments = Appointment.objects.get_week_appointments_for_display(year, month, day)
-    monday, tuesday, wednesday, thursday, friday = Appointment.get_weekdays_dates(year, month, day)
-    weekdays = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday',)
+    monday, tuesday, wednesday, thursday, friday, saturday = Appointment.get_weekdays_dates(year, month, day)
+    weekdays = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday')
     
     # Change data depending from user
     free_day_types = [free_day['free_day_type'] for free_day in FreeDay.objects.values('free_day_type')]
@@ -34,7 +34,7 @@ def show_week(request, year, month, day):
         for dictionary in appointments:
 
             # compare date with current
-            for date_, weekday in zip((monday, tuesday, wednesday, thursday, friday), weekdays):
+            for date_, weekday in zip((monday, tuesday, wednesday, thursday, friday, saturday), weekdays):
                 hour, minute = map(int, dictionary['time'].split(':'))
                 datetime_ = datetime(date_.year, date_.month, date_.day, hour, minute)
                 dictionary[f"{weekday}_not_available"] = datetime_ <= datetime.now()
@@ -54,6 +54,7 @@ def show_week(request, year, month, day):
          'wednesday': wednesday.strftime('%Y-%m-%d'),
          'thursday': thursday.strftime('%Y-%m-%d'),
          'friday': friday.strftime('%Y-%m-%d'),
+         'saturday': saturday.strftime('%Y-%m-%d'),
          'prev_week_url': prev_week_start_url,
          'next_week_url': next_week_start_url
         })
