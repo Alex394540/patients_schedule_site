@@ -20,3 +20,7 @@
 	color: gray;
 	background-color: #4c4242;
 }
+
+.news-container pre {
+        white-space: pre-wrap;
+}

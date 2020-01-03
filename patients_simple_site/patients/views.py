@@ -13,11 +13,13 @@ from .forms import AppointmentForm
 from .messengers_connector import notify_viber_in_bg
 
 
+@never_cache
 def show_day(request, year, month, day):
     appointments = Appointment.objects.days_appointments(year, month, day)
     return render(request, 'patients/show_day.html', {'appointments': appointments})
 
 
+@never_cache
 def show_week(request, year, month, day):
     
     # Create new session if has not been created
@@ -27,7 +29,7 @@ def show_week(request, year, month, day):
     appointments = Appointment.objects.get_week_appointments_for_display(year, month, day)
     monday, tuesday, wednesday, thursday, friday, saturday = Appointment.get_weekdays_dates(year, month, day)
     weekdays = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday')
-    
+   
     # Change data depending from user
     free_day_types = [free_day['free_day_type'] for free_day in FreeDay.objects.values('free_day_type')]
     if not request.user.is_superuser:
@@ -88,8 +90,8 @@ def add_appointment(request):
         appointment = form.save()
         request.session.set_expiry(int((appointment_datetime - datetime.now()).total_seconds()))
 
-        data = {'date': date_, 'time': time_, 'comment': comment, 'was_added': True}
-        notify_viber_in_bg(json.dumps(data))
+        #data = {'date': date_, 'time': time_, 'comment': comment, 'was_added': True}
+        #notify_viber_in_bg(json.dumps(data))
         return HttpResponse('OK')
     else:
         return HttpResponse(status=400)
@@ -109,8 +111,8 @@ def remove_appointment(request):
 
     appointment = Appointment.objects.filter(time=appointment_datetime, created_session=session_key)
     if appointment.exists():
-        data = {'date': date_, 'time': time_, 'comment': appointment.first().comment, 'was_added': False}
-        notify_viber_in_bg(json.dumps(data))
+        #data = {'date': date_, 'time': time_, 'comment': appointment.first().comment, 'was_added': False}
+        #notify_viber_in_bg(json.dumps(data))
         appointment.delete()
         return HttpResponse('OK')
     else:
